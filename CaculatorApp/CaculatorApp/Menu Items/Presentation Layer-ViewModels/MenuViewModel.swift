@@ -24,7 +24,7 @@ final class MenuViewModel {
     static var allItems: [MenuViewModel] {
         let firstItems = Menu.items.map { MenuViewModel($0) }
         let secondItems = ElectronicItem.items.map { MenuViewModel($0) }
-        return firstItems + secondItems
+        return firstItems + secondItems + firstItems + secondItems + firstItems
     }
 
 }

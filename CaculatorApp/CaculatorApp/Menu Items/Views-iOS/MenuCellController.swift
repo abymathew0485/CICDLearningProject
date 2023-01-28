@@ -7,13 +7,19 @@
 
 import UIKit
 
-class MenuCellController {
+final class MenuCellController {
 
-    func configureCell(_ tableView: UITableView, viewModel: MenuViewModel) -> MenuTableViewCell {
+    private let viewModel: MenuViewModel
+    private var cell: MenuTableViewCell?
 
-        let cell: MenuTableViewCell = tableView.dequeueReusableCell(withIdentifier: String(describing: MenuTableViewCell.self)) as! MenuTableViewCell
+    init(viewModel: MenuViewModel){
+        self.viewModel = viewModel
+    }
+
+    func view(in tableView: UITableView) -> MenuTableViewCell {
+        let cell: MenuTableViewCell = self.cell ?? tableView.dequeueReusableCell(withIdentifier: String(describing: MenuTableViewCell.self)) as! MenuTableViewCell
+        self.cell = cell
         cell.configureCell(with: viewModel)
         return cell
     }
-
 }
